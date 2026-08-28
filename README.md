@@ -1,8 +1,23 @@
 # SpiceQL
 [![Documentation Status](https://readthedocs.org/projects/sugar-spice/badge/?version=latest)](http://sugar-spice.readthedocs.io/?badge=latest) [![CMake](https://github.com/DOI-USGS/SpiceQL/actions/workflows/ctests.yml/badge.svg)](https://github.com/DOI-USGS/SpiceQL/actions/workflows/ctests.yml)
 
+[SpiceQL Manual](https://astrogeology.usgs.gov/docs/manuals/spiceql/)
+
 This Library provides a C++ interface querying, reading and writing Naif SPICE kernels. Built on the [Naif Toolkit](https://naif.jpl.nasa.gov/naif/toolkit.html).
 
+Check out the Astrogeology Software Docs for SpiceQL examples:
+
+- [Cassini Tutorial](https://astrogeology.usgs.gov/docs/getting-started/using-spiceql/spiceql-cassini-tutorial/)
+- [pyspiceql Visualization](https://astrogeology.usgs.gov/docs/getting-started/using-spiceql/visualizing-with-pyspiceql-tutorial/)
+- [REST, Python, C++ API](https://astrogeology.usgs.gov/docs/getting-started/using-spiceql/spiceql-cassini-tutorial/)
+- [WebAssembly Bindings](https://astrogeology.usgs.gov/docs/getting-started/using-spiceql/spiceql-wasm/)
+- [Use with Other Libraries](https://astrogeology.usgs.gov/docs/how-to-guides/SPICE/using-spiceql-with-other-libraries/)
+- [Use in USGS ISIS and ALE](https://astrogeology.usgs.gov/docs/how-to-guides/SPICE/using-web-spice-in-isis-and-ale/)
+
+NAIF Resources - Learn more about the Kernels and SPICE Information that SpiceQL queries:
+
+- [Intro to Kernels (PDF)](https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/Tutorials/pdf/individual_docs/12_intro_to_kernels)
+- [SPICE Required Reading](https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/req/index.html)
 
 ## Building The Library
 
