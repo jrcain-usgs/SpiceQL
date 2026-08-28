@@ -1,7 +1,6 @@
 # SpiceQL
-[![Documentation Status](https://readthedocs.org/projects/sugar-spice/badge/?version=latest)](http://sugar-spice.readthedocs.io/?badge=latest) [![CMake](https://github.com/DOI-USGS/SpiceQL/actions/workflows/ctests.yml/badge.svg)](https://github.com/DOI-USGS/SpiceQL/actions/workflows/ctests.yml)
 
-[SpiceQL Manual](https://astrogeology.usgs.gov/docs/manuals/spiceql/)
+[SpiceQL Manual](https://astrogeology.usgs.gov/docs/manuals/spiceql/) ([0.1 Archive](http://sugar-spice.readthedocs.io/?badge=latest))
 
 This Library provides a C++ interface querying, reading and writing Naif SPICE kernels. Built on the [Naif Toolkit](https://naif.jpl.nasa.gov/naif/toolkit.html).
 
@@ -21,55 +20,63 @@ NAIF Resources - Learn more about the Kernels and SPICE Information that SpiceQL
 
 ## Building The Library
 
-The library leverages anaconda to maintain all of it's dependencies. So in order to build SpiceQL, you'll need to have Anaconda installed.
+### Prerequisites
 
-> **NOTE**:If you already have Anaconda installed, skip to step 3.
+#### Conda
 
-1. Download either the Anaconda or Miniconda installation script for your OS platform. Anaconda is a much larger distribtion of packages supporting scientific python, while Miniconda is a minimal installation and not as large: Anaconda installer, Miniconda installer
-1. If you are running on some variant of Linux, open a terminal window in the directory where you downloaded the script, and run the following commands. In this example, we chose to do a full install of Anaconda, and our OS is Linux-based. Your file name may be different depending on your environment.
-   * If you are running Mac OS X, a pkg file (which looks similar to Anaconda3-5.3.0-MacOSX-x86_64.pkg) will be downloaded. Double-click on the file to start the installation process.
-1. Open a Command line prompt and run the following commands:
+SpiceQL uses conda to maintain dependencies.
+If you don't have conda yet, we recommend installing it 
+via [Miniforge](https://github.com/conda-forge/miniforge):
+
+```sh
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+bash Miniforge3-$(uname)-$(uname -m).sh
+```
+
+#### Kernels
+
+If you have ISIS and haven't downloaded kernels, use the [`downloadIsisData` command](https://astrogeology.usgs.gov/docs/how-to-guides/environment-setup-and-maintenance/isis-data-area/).
+
+If you don't have ISIS, you can still use the script by downloading 
+[the downloadIsisData script](https://raw.githubusercontent.com/USGS-Astrogeology/ISIS3/dev/isis/scripts/downloadIsisData) 
+and the [rclone.conf](https://raw.githubusercontent.com/USGS-Astrogeology/ISIS3/dev/isis/config/rclone.conf).
+You will need to have [rclone](https://rclone.org/install/) and python installed to run the script.
+
+### Cloning and Building
 
 ```bash
-# Clone the Github repo, note the recursive flag, this library depends on
-# submodules that also need to be cloned. --recurse-submodules enables this and
-# the -j8 flag parallelizes the cloning process.
+# Clone the repo, including submodules. -j8 parellelizes for a faster clone.
 git clone --recurse-submodules -j8 https://github.com/DOI-USGS/SpiceQL.git
+# To clone submodules later: git submodule update --init --recursive
 
-# cd into repo dir
+# Open the newly cloned repo
 cd SpiceQL
 
-# Create new environment from the provided dependency file, the -n flag is
-# proceded by the name of the new environment, change this to whatever works for you
+# Create conda env from environment.yml 
+# -n <env-name>, any name is fine.
 conda env create -f environment.yml -n ssdev
 
 # activate the new env
 conda activate ssdev
 
-# make and cd into the build directory. This can be placed anywhere, but here, we make
-# it in the repo (build is in .gitingore, so no issues there)
+# make and cd into the build directory.
 mkdir build
 cd build
 
 # Configure the project, install directory can be anything, here, it's the conda env
 cmake .. -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX
 
-# Optional: DB files are installed by default in $CONDA_PREFIX/etc/SpiceQL/db to 
-# use files that are included within the repo, you must create and define 
-# an environment variable named SPICEQL_DEV_DB. 
-# note SPICEQL_DEV_DB must be set to 'True'
+# Optional: DB files are installed by default in $CONDA_PREFIX/etc/SpiceQL/db.
+# To use files included within the repo, 
+# create and define an environment variable named SPICEQL_DEV_DB, set to True.
 export SPICEQL_DEV_DB=True
 
-# Set the environment variable(s) to point to your kernel install 
-# The following environment variables are used by default in order of priority: 
-# $SPICEROOT, $ALESPICEROOT, $ISISDATA. 
-# SPICEROOT is unique to this lib, while ALESPICEROOT, and ISISDATA are used 
-# by both ALE and ISIS respectively. 
-# note you can set each of these environment variables path to point to the
-# correspoding kernels downloaded location, ie 
-SPICEROOT=~/spiceQL/Kernals/spiceRootKernel
-ALESPICEROOT=~/spiceQL/Kernals/aleSpiceRootKernel
-ISISDATA=~/spiceQL/Kernals/isisData
+# Set the environment variable(s) to point to your kernel data.
+# The following env vars are used by default in order of priority: 
+# (1) $SPICEROOT, (2) $ALESPICEROOT, (3) $ISISDATA.
+SPICEROOT=/data/kernels/
+# ALESPICEROOT=/data/kernels/
+# ISISDATA=/data/kernels/
 
 # build and install project
 make install
