@@ -149,24 +149,36 @@ The small hand-written wrappers `bindings/wasm/spiceql.js` (which you import) an
 Copy the three `spiceql_wasm.*` artifacts and both wrappers (`bindings/wasm/spiceql.js` and `bindings/wasm/naifspice.js`) next to each other (they must be co-located — `spiceql.js` imports the other two), then import `spiceql.js` locally:
 
 ```js
-// example.mjs — run with: node example.mjs
+// example.js — run with: node example.js
 
+import { readFileSync } from 'node:fs';
 import { loadSpiceQL } from './spiceql.js';
 
 const spiceql = await loadSpiceQL();
 
-// Kernel search (the HDF5 inventory) is not available in the WASM build. Furnish
-// your own kernels: write their bytes into the virtual filesystem, then pass the
-// paths explicitly with searchKernels:false.
-import { readFileSync } from 'node:fs';
-spiceql.mountKernel('/kernels/naif0012.tls', readFileSync('naif0012.tls'));
+const frameCode = -85;              
+const sclkTime = 922997380.174174;  // We'll use SpiceQL to convert Sclk to ET
 
-const { result, kernels } = spiceql.utcToEt('2000-01-01T00:00:00', {
-  searchKernels: false,
-  kernelList: ['/kernels/naif0012.tls'],
+// Mount Kernels
+const kernelList = [];
+const kernelUrls = [
+    './data/base/kernels/lsk/naif0012.tls',
+    './data/lro/kernels/fk/lro_frames_2014049_v01.tf',
+    './data/lro/kernels/sclk/lro_clkcor_2024262_v00.tsc',
+]
+for (const url of kernelUrls) {
+    const kernelPath = '/kernels/' + url.split('/').pop();    // Get filname, discard path
+    spiceql.mountKernel(kernelPath, readFileSync(url));       // Mount as sanitized path
+    kernelList.push(kernelPath)                               // Add sanitized path to list
+}
+
+// Convert Spacecraft Clock Time (sclk) to Ephemeris Time (et)
+const { result: ephTime } = spiceql.doubleSclkToEt(frameCode, sclkTime, {
+    mission: 'lro',
+    searchKernels: false,
+    kernelList,
 });
-console.log(result);   // ET seconds past J2000
-console.log(kernels);  // { lsk: ['/kernels/naif0012.tls'] }
+console.info("Ephemeris Time", ephTime);
 ```
 
 In a browser it works the same way — `import` `spiceql.js` in a
@@ -178,24 +190,44 @@ because the browser blocks `fetch()`):
 
 ```html
 <!doctype html>
+...
 <script type="module">
-  import { loadSpiceQL } from 'https://cdn.jsdelivr.net/npm/@usgs-astrogeology/spiceql/dist/spiceql.js';
+    // Import and Load SpiceQL
+    import { loadSpiceQL } from 'https://cdn.jsdelivr.net/npm/@usgs-astrogeology/spiceql/dist/spiceql.js';
 
-  const spiceql = await loadSpiceQL();
+    const spiceqlBasePath = 'https://cdn.jsdelivr.net/npm/@usgs-astrogeology/spiceql/dist/';
+    const spiceql = await loadSpiceQL({
+        moduleOverrides: { locateFile: (path) => spiceqlBasePath + path }
+    });
 
-  // No kernel search in WASM — fetch the kernel and write it into the
-  // virtual filesystem before calling.
-  const bytes = new Uint8Array(await (await fetch('https://cdn.jsdelivr.net/gh/DOI-USGS/SpiceQL/SpiceQL/db/kernels/naif0012.tls')).arrayBuffer());
-  spiceql.mountKernel('/kernels/naif0012.tls', bytes);
+    // Mount Kernels
+    const kernelList = [];
+    const kernelUrls = [
+        'https://asc-isisdata.s3.us-west-2.amazonaws.com/usgs_data/base/kernels/lsk/naif0012.tls',
+        'https://asc-isisdata.s3.us-west-2.amazonaws.com/usgs_data/lro/kernels/fk/lro_frames_2014049_v01.tf',
+        'https://asc-isisdata.s3.us-west-2.amazonaws.com/usgs_data/lro/kernels/sclk/lro_clkcor_2024262_v00.tsc',
+    ]
+    for (const url of kernelUrls) {
+        const kernelData = await fetch(url);                              // Fetch
+        const kernelBuff = new Uint8Array(await kernelData.arrayBuffer()) // Load into Buffer
+        const kernelPath = '/kernels/' + url.split('/').pop();            // Get filname, discard path
+        spiceql.mountKernel(kernelPath, kernelBuff);                      // Mount as sanitized path
+        kernelList.push(kernelPath)                                       // Add sanitized path to list
+    }
 
-  const { result, kernels } = spiceql.utcToEt('2000-01-01T00:00:00', {
-    searchKernels: false,
-    kernelList: ['/kernels/naif0012.tls'],
-  });
+    // Data to query with
+    const frameCode = -85;
+    const sclkTime = 922997380.174174;
 
-  console.log(result);   // ET seconds past J2000
-  console.log(kernels);  // { lsk: ['/kernels/naif0012.tls'] }
+    // Convert Spacecraft Clock Time (sclk) to Ephemeris Time (et)
+    const { result: ephTime } = spiceql.doubleSclkToEt(frameCode, sclkTime, {
+        mission: 'lro',
+        searchKernels: false,
+        kernelList,
+    });
+    console.info("Ephemeris Time", ephTime);
 </script>
+...
 ```
 
 ```bash
