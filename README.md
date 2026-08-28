@@ -67,8 +67,7 @@ cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX
 
 # Optional: DB files are installed by default in $CONDA_PREFIX/etc/SpiceQL/db.
-# To use files included within the repo, 
-# create and define an environment variable named SPICEQL_DEV_DB, set to True.
+# To use files included in the repo, set env var SPICEQL_DEV_DB=True.
 export SPICEQL_DEV_DB=True
 
 # Set the environment variable(s) to point to your kernel data.
