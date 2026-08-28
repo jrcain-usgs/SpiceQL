@@ -96,6 +96,8 @@ The SpiceQL API is available via Python bindings in the module `pyspiceql`. The 
 
 ## WebAssembly / JavaScript
 
+See Also: [SpiceQL WebAssembly Bindings](https://astrogeology.usgs.gov/docs/getting-started/using-spiceql/spiceql-wasm/)
+
 ### Setup/Installation Options
 
 #### [GitHub Releases (Manual Download) ↗](https://github.com/DOI-USGS/SpiceQL/releases)
