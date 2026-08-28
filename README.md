@@ -190,7 +190,7 @@ const kernelUrls = [
     './data/lro/kernels/sclk/lro_clkcor_2024262_v00.tsc',
 ]
 for (const url of kernelUrls) {
-    const kernelPath = '/kernels/' + url.split('/').pop();    // Get filname, discard path
+    const kernelPath = '/kernels/' + url.split('/').pop();    // Get filename, discard path
     spiceql.mountKernel(kernelPath, readFileSync(url));       // Mount as sanitized path
     kernelList.push(kernelPath)                               // Add sanitized path to list
 }
@@ -233,7 +233,7 @@ because the browser blocks `fetch()`):
     for (const url of kernelUrls) {
         const kernelData = await fetch(url);                              // Fetch
         const kernelBuff = new Uint8Array(await kernelData.arrayBuffer()) // Load into Buffer
-        const kernelPath = '/kernels/' + url.split('/').pop();            // Get filname, discard path
+        const kernelPath = '/kernels/' + url.split('/').pop();            // Get filename, discard path
         spiceql.mountKernel(kernelPath, kernelBuff);                      // Mount as sanitized path
         kernelList.push(kernelPath)                                       // Add sanitized path to list
     }
