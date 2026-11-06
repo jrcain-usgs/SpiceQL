@@ -8,9 +8,15 @@
 * **addAliasKey** ([**SpiceQL**](namespaceSpiceQL.md))
 
 
+## b
+
+* **badSegment** ([**SpiceQL::daf::detail**](namespaceSpiceQL_1_1daf_1_1detail.md))
+
+
 ## c
 
 * **create\_database** ([**SpiceQL::Inventory**](namespaceSpiceQL_1_1Inventory.md))
+* **ckSegmentCoverage** ([**SpiceQL::daf**](namespaceSpiceQL_1_1daf.md))
 * **checkNaifErrors** ([**SpiceQL**](namespaceSpiceQL.md))
 * **concatStates** ([**SpiceQL**](namespaceSpiceQL.md))
 * **currentLogLevel** ([**SpiceQL**](namespaceSpiceQL.md))
@@ -48,7 +54,7 @@
 * **getFrameCodeFromCache** ([**SpiceQL::Inventory**](namespaceSpiceQL_1_1Inventory.md))
 * **getFrameList** ([**SpiceQL::Inventory**](namespaceSpiceQL_1_1Inventory.md))
 * **getFrameNameFromCache** ([**SpiceQL::Inventory**](namespaceSpiceQL_1_1Inventory.md))
-* **getCacheDir** ([**SpiceQL::Memo**](namespaceSpiceQL_1_1Memo.md), [**SpiceQL**](namespaceSpiceQL.md))
+* **get\_kernel\_intervals** ([**SpiceQL::Inventory**](namespaceSpiceQL_1_1Inventory.md))
 * **getPathsFromRegex** ([**SpiceQL::Memo**](namespaceSpiceQL_1_1Memo.md), [**SpiceQL**](namespaceSpiceQL.md))
 * **getTimeIntervals** ([**SpiceQL::Memo**](namespaceSpiceQL_1_1Memo.md), [**SpiceQL**](namespaceSpiceQL.md))
 * **globTimeIntervals** ([**SpiceQL::Memo**](namespaceSpiceQL_1_1Memo.md), [**SpiceQL**](namespaceSpiceQL.md))
@@ -57,12 +63,15 @@
 * **getAliasMapJsonFile** ([**SpiceQL**](namespaceSpiceQL.md))
 * **getAvailableConfigFiles** ([**SpiceQL**](namespaceSpiceQL.md))
 * **getAvailableConfigs** ([**SpiceQL**](namespaceSpiceQL.md))
+* **getCacheDir** ([**SpiceQL**](namespaceSpiceQL.md))
 * **getConfigDirectory** ([**SpiceQL**](namespaceSpiceQL.md))
 * **getDataDirectory** ([**SpiceQL**](namespaceSpiceQL.md))
 * **getDefaultLsk** ([**SpiceQL**](namespaceSpiceQL.md))
 * **getExactTargetOrientations** ([**SpiceQL**](namespaceSpiceQL.md))
 * **getFrameInfo** ([**SpiceQL**](namespaceSpiceQL.md))
 * **getHdfFile** ([**SpiceQL**](namespaceSpiceQL.md))
+* **getKernelCoverage** ([**SpiceQL**](namespaceSpiceQL.md))
+* **getKernelIntervals** ([**SpiceQL**](namespaceSpiceQL.md))
 * **getKernelStartStopTimes** ([**SpiceQL**](namespaceSpiceQL.md))
 * **getKernelStringValue** ([**SpiceQL**](namespaceSpiceQL.md))
 * **getKernelType** ([**SpiceQL**](namespaceSpiceQL.md))
@@ -92,7 +101,6 @@
 
 ## h
 
-* **has\_cache\_expired** ([**SpiceQL::Memo**](namespaceSpiceQL_1_1Memo.md))
 * **hash\_combine** ([**SpiceQL::Memo**](namespaceSpiceQL_1_1Memo.md))
 
 
@@ -128,8 +136,14 @@
 ## m
 
 * **make\_memoized** ([**SpiceQL::Memo**](namespaceSpiceQL_1_1Memo.md))
+* **merge** ([**SpiceQL::daf**](namespaceSpiceQL_1_1daf.md))
 * **mergeConfigs** ([**SpiceQL**](namespaceSpiceQL.md))
 * **merge\_json** ([**SpiceQL**](namespaceSpiceQL.md))
+
+
+## n
+
+* **nint** ([**SpiceQL::daf::detail**](namespaceSpiceQL_1_1daf_1_1detail.md))
 
 
 ## p
@@ -153,6 +167,7 @@
 * **setAliasMap** ([**SpiceQL**](namespaceSpiceQL.md))
 * **setCacheDir** ([**SpiceQL**](namespaceSpiceQL.md))
 * **setConfigDirectory** ([**SpiceQL**](namespaceSpiceQL.md))
+* **sortCoverageRows** ([**SpiceQL**](namespaceSpiceQL.md))
 * **spiceAPIQuery** ([**SpiceQL**](namespaceSpiceQL.md))
 * **split** ([**SpiceQL**](namespaceSpiceQL.md))
 * **strSclkToEt** ([**SpiceQL**](namespaceSpiceQL.md))
@@ -160,8 +175,6 @@
 
 ## t
 
-* **time\_from\_str** ([**SpiceQL::Memo**](namespaceSpiceQL_1_1Memo.md))
-* **to\_time\_t** ([**SpiceQL::Memo**](namespaceSpiceQL_1_1Memo.md))
 * **toLower** ([**SpiceQL**](namespaceSpiceQL.md))
 * **toUpper** ([**SpiceQL**](namespaceSpiceQL.md))
 * **translateCodeToName** ([**SpiceQL**](namespaceSpiceQL.md))
@@ -177,6 +190,7 @@
 
 ## w
 
+* **walkInterpolationIntervals** ([**SpiceQL::daf::detail**](namespaceSpiceQL_1_1daf_1_1detail.md))
 * **writeCk** ([**SpiceQL**](namespaceSpiceQL.md))
 * **writeComment** ([**SpiceQL**](namespaceSpiceQL.md))
 * **writeSpk** ([**SpiceQL**](namespaceSpiceQL.md))

@@ -17,6 +17,7 @@
 
 * **confPointer** ([**SpiceQL::Config**](classSpiceQL_1_1Config.md))
 * **config** ([**SpiceQL::Config**](classSpiceQL_1_1Config.md))
+* **CACHE\_RECORDS** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
 * **completion\_** ([**restincurl::Request**](classrestincurl_1_1Request.md), [**restincurl::RequestBuilder**](classrestincurl_1_1RequestBuilder.md))
 * **connect\_timeout\_** ([**restincurl::RequestBuilder**](classrestincurl_1_1RequestBuilder.md))
 * **curl\_code** ([**restincurl::Result**](structrestincurl_1_1Result.md))
@@ -25,6 +26,8 @@
 
 ## d
 
+* **DIRECT\_READ\_BYTES** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **dc** ([**SpiceQL::daf::Summary**](structSpiceQL_1_1daf_1_1Summary.md))
 * **data\_** ([**restincurl::InDataHandler**](structrestincurl_1_1InDataHandler.md), [**restincurl::OutDataHandler**](structrestincurl_1_1OutDataHandler.md))
 * **default\_data\_buffer\_** ([**restincurl::Request**](classrestincurl_1_1Request.md))
 * **default\_in\_handler\_** ([**restincurl::Request**](classrestincurl_1_1Request.md))
@@ -40,6 +43,7 @@
 
 ## f
 
+* **fullKernelPath** ([**SpiceQL::QueryOpts**](structSpiceQL_1_1QueryOpts.md))
 * **file\_paths** ([**SpiceQL::TimeIndexedKernels**](classSpiceQL_1_1TimeIndexedKernels.md))
 * **fp\_** ([**restincurl::Request**](classrestincurl_1_1Request.md))
 
@@ -55,12 +59,28 @@
 
 ## i
 
+* **interval\_body\_codes** ([**SpiceQL::KernelCoverage**](structSpiceQL_1_1KernelCoverage.md), [**SpiceQL::TimeIndexedKernels**](classSpiceQL_1_1TimeIndexedKernels.md))
+* **interval\_starts** ([**SpiceQL::KernelCoverage**](structSpiceQL_1_1KernelCoverage.md), [**SpiceQL::TimeIndexedKernels**](classSpiceQL_1_1TimeIndexedKernels.md))
+* **interval\_stops** ([**SpiceQL::KernelCoverage**](structSpiceQL_1_1KernelCoverage.md), [**SpiceQL::TimeIndexedKernels**](classSpiceQL_1_1TimeIndexedKernels.md))
+* **interval\_kindex** ([**SpiceQL::TimeIndexedKernels**](classSpiceQL_1_1TimeIndexedKernels.md))
+* **ic** ([**SpiceQL::daf::Summary**](structSpiceQL_1_1daf_1_1Summary.md))
 * **is\_built\_** ([**restincurl::RequestBuilder**](classrestincurl_1_1RequestBuilder.md))
 
 
 ## j
 
 * **joined\_** ([**restincurl::Worker::WorkerThread**](classrestincurl_1_1Worker_1_1WorkerThread.md))
+
+
+## k
+
+* **kernelList** ([**SpiceQL::QueryOpts**](structSpiceQL_1_1QueryOpts.md))
+
+
+## l
+
+* **limitCk** ([**SpiceQL::QueryOpts**](structSpiceQL_1_1QueryOpts.md))
+* **limitSpk** ([**SpiceQL::QueryOpts**](structSpiceQL_1_1QueryOpts.md))
 
 
 ## m
@@ -77,11 +97,24 @@
 * **m\_timedep\_kerns** ([**SpiceQL::InventoryImpl**](classSpiceQL_1_1InventoryImpl.md))
 * **m\_kernels** ([**SpiceQL::KernelSet**](classSpiceQL_1_1KernelSet.md))
 * **m\_loadedKernels** ([**SpiceQL::KernelSet**](classSpiceQL_1_1KernelSet.md))
-* **m\_dependants** ([**SpiceQL::Memo::Cache**](classSpiceQL_1_1Memo_1_1Cache.md))
 * **m\_data** ([**SpiceQL::Memo::Memory**](classSpiceQL_1_1Memo_1_1Memory.md))
 * **m\_fc** ([**SpiceQL::Memo::memoize**](structSpiceQL_1_1Memo_1_1memoize.md))
 * **m\_func** ([**SpiceQL::Memo::memoize**](structSpiceQL_1_1Memo_1_1memoize.md))
 * **m\_id** ([**SpiceQL::Memo::memoize**](structSpiceQL_1_1Memo_1_1memoize.md))
+* **MAX\_READ\_AHEAD** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_cache** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_cachedRecord** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_handle** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_idword** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_nd** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_nextRecord** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_ni** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_path** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md), [**SpiceQL::daf::File::Handle**](classSpiceQL_1_1daf_1_1File_1_1Handle.md))
+* **m\_readAhead** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_size** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_summaries** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_swap** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
+* **m\_fd** ([**SpiceQL::daf::File::Handle**](classSpiceQL_1_1daf_1_1File_1_1Handle.md))
 * **mime\_** ([**restincurl::Request**](classrestincurl_1_1Request.md))
 * **msg** ([**restincurl::Result**](structrestincurl_1_1Result.md))
 * **mutex\_** ([**restincurl::TlsLocker**](classrestincurl_1_1TlsLocker.md), [**restincurl::Worker**](classrestincurl_1_1Worker.md))
@@ -108,6 +141,7 @@
 
 ## r
 
+* **RECORD\_BYTES** ([**SpiceQL::daf::File**](classSpiceQL_1_1daf_1_1File.md))
 * **request\_type\_** ([**restincurl::Request**](classrestincurl_1_1Request.md), [**restincurl::RequestBuilder**](classrestincurl_1_1RequestBuilder.md))
 * **request\_** ([**restincurl::RequestBuilder**](classrestincurl_1_1RequestBuilder.md))
 * **request\_timeout\_** ([**restincurl::RequestBuilder**](classrestincurl_1_1RequestBuilder.md))
@@ -115,6 +149,9 @@
 
 ## s
 
+* **start\_time** ([**SpiceQL::KernelCoverage**](structSpiceQL_1_1KernelCoverage.md))
+* **stop\_time** ([**SpiceQL::KernelCoverage**](structSpiceQL_1_1KernelCoverage.md))
+* **searchKernels** ([**SpiceQL::QueryOpts**](structSpiceQL_1_1QueryOpts.md))
 * **start\_times** ([**SpiceQL::TimeIndexedKernels**](classSpiceQL_1_1TimeIndexedKernels.md))
 * **stop\_times** ([**SpiceQL::TimeIndexedKernels**](classSpiceQL_1_1TimeIndexedKernels.md))
 * **sendt\_bytes\_** ([**restincurl::OutDataHandler**](structrestincurl_1_1OutDataHandler.md))
@@ -129,6 +166,7 @@
 
 ## u
 
+* **useWeb** ([**SpiceQL::QueryOpts**](structSpiceQL_1_1QueryOpts.md))
 * **url\_** ([**restincurl::RequestBuilder**](classrestincurl_1_1RequestBuilder.md))
 
 
